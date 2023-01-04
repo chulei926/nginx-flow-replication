@@ -5,5 +5,10 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 RUN mkdir -p /var/log/nginx
 
+ENV DEPLOY_ENV prod
+
 EXPOSE 9999
-ENTRYPOINT nginx -g 'daemon off;'
+WORKDIR /etc/nginx
+
+COPY ./docker-entrypoint.sh /
+ENTRYPOINT ["/docker-entrypoint.sh"]

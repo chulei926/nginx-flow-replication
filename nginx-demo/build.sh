@@ -15,12 +15,12 @@ for img in $(docker images -f "dangling=true" -q); do
   docker rmi $img
 done
 
-sub_version=6
+sub_version=17
 version="1.$sub_version"
 
 docker build -t "nginx-demo:$version"  .
 echo "please execute this command:"
-echo "docker stop nginx-demo && docker rm -f nginx-demo && docker run -d -p 9999:9999 --name nginx-demo nginx-demo:$version"
+echo "docker stop nginx-demo && docker rm -f nginx-demo && docker run -d -p 9999:9999 --name nginx-demo nginx-demo:$version "
 echo ""
 
 # 自动修改版本号
